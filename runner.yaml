@@ -1,10 +1,26 @@
+runner:
+  name: Example Tailored Ion Runner
+  description: Tailored means that the runner has a custom docker container that is used to run the job with additional software installed. This ion runner prints out all of the arguments passed to it with addition stdout / stderr outputs for testing. It also prints out all of the environment variables that are available to it.
+  version: 0.0.2
+
+build:
+  commands: |
+    echo "START: Building the runner"
+    apt install -y nmap
+    echo "END: Building the runner"
+
 inputs:
   - name: input1
-    prompt: Example input 1
+    prompt: First Command Line Argument
+    type: text
+  - name: input2
+    prompt: Second Command Line Argument
     type: text
 
 launch:
   program: app.py
   args:
-    - '--input'
+    - '--input_one'
     - '${input1}'
+    - '--input_two'
+    - '${input2}'
