@@ -9,7 +9,7 @@ build:
     apt install -y nmap
     echo "END: Building the runner"
 
-inputs:
+webform:
   - name: input1
     prompt: First Command Line Argument
     type: text
@@ -18,9 +18,4 @@ inputs:
     type: text
 
 launch:
-  program: app.py
-  args:
-    - '--input_one'
-    - '${input1}'
-    - '--input_two'
-    - '${input2}'
+  command: app.py --input_one ${input1} --input_two ${input2}
